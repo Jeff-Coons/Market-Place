@@ -1,0 +1,568 @@
+<!doctype html>
+<html class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <title>market place</title>
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+    <!-- build:css styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="../bower_components/normalize-css/normalize.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:css styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+    <script type="text/javascript" src="//api.filepicker.io/v1/filepicker.js"></script>
+    <!-- build:js scripts/vendor/modernizr.js -->
+    <script src="../bower_components/modernizr/modernizr.js"></script>
+    <!-- endbuild -->
+  </head>
+  <body>
+
+    <script type="text/x-handlebars" data-template-name="application">
+      {{outlet}}
+    </script>
+
+
+    <!--//////////////// Landing Page ///////////////////-->
+    <script type="text/x-handlebars" data-template-name="index">
+      <div class="container">
+        <header>
+          <div class="logo"><img src="images/Market_Place_wh_horz.png"></div>
+          <div class="login-buttons">
+            <p>Login</p>
+            <div class="buttons">
+              {{#link-to 'login.client'}}<button class="client-login">C</button>{{/link-to}}
+              {{#link-to 'login.freelancer'}}<button class="freelance-login">F</button>{{/link-to}}
+            </div>
+          </div>
+        </header>
+        <section class="signup">
+          <div class="signup-button">
+            <h1>Sign Up</h1>
+            <p>An app that matches clients and freelancers to bring projects to life. Freelancers bid on projects of interest, and clients choose the freelancer who best fits their needs.</p>
+            <div class='s-buttons'>
+              {{#link-to 'signup.client'}}<button class="client-signup">Client</button>{{/link-to}}
+              {{#link-to 'signup.freelancer'}}<button class="freelance-signup">Freelance</button>{{/link-to}}
+            </div>
+          </div>
+        </section>
+
+        <section class="info">
+          <h1>Info</h1>
+          <p>Wayfarers meditation fingerstache Etsy ennui sustainable. Health goth disrupt occupy, pork belly you probably havent heard of them selvage gastropub squid hoodie cliche normcore chillwave asymmetrical. Mixtape fanny pack forage Pinterest, taxidermy wayfarers Brooklyn Thundercats</p>
+        </section>
+
+        <section class="steps">
+          <div class="step">
+            <h3>Step One</h3>
+            <p>Signup up for an account!<br />If you're a freelancer or a client, get your account and profile setup to start investing in your projects.</p>
+          </div>
+
+          <div class="step">
+            <h3>Step Two</h3>
+            <p>Clients post a job, with a thorough and detailed description of what you need and what you're expecting. Be sure to mention what content you have. Freelancers bid on a job that sparks your interest and excites you.</p>
+          </div>
+
+          <div class="step">
+            <h3>Step Three</h3>
+            <p>Clients go through your bids and choose the freelancer that best meets your needs. Then begin working together to bring the project to life!</p>
+          </div>
+        </section>
+
+        <footer>
+          <div class="logo"><img src="images/Market_Place_wh_horz.png"></div>
+          <p>&copy; 2014. All Rights Reserved.</p>
+        </footer>
+
+      </div>
+    </script>
+
+
+    <!--//////////////// signup ///////////////////-->
+    <script type="text/x-handlebars" data-template-name="signup/client">
+      <div class="s-and-l-wrapper">
+
+        <section class="body">
+          <img src="images/Market_Place_wh_horz.png" class="logo">
+          <form class="form">
+            {{input type="text" value=name placeholder="Name"}}
+            {{input type="email" value=email placeholder="Email"}}
+            {{input type="password" value=password placeholder="Password"}}
+            <button {{action "signup"}}>Sign Up</button>
+          </form>
+        </section>
+        <p>&copy; 2014. All Rights Reserved.</p>
+      </div>
+    </script>
+
+    <script type="text/x-handlebars" data-template-name="signup/freelancer">
+      <div class="s-and-l-wrapper">
+        <section class="body">
+          <img src="images/Market_Place_wh_horz.png" class="logo">
+          <form>
+            {{input type="text" value=name placeholder="Name"}}
+            {{input type="email" value=email placeholder="Email"}}
+            {{input type="password" value=password placeholder="Password"}}
+            <button {{action "signup"}}>Sign Up</button>
+          </form>
+        </section>
+        <p>&copy; 2014. All Rights Reserved.</p>
+      </div>
+    </script>
+
+
+    <!--//////////////// login ///////////////////-->
+    <script type="text/x-handlebars" data-template-name="login/client">
+      <div class="s-and-l-wrapper">
+        <section class="body">
+          <img src="images/Market_Place_wh_horz.png" class="logo">
+          <form>
+            {{input type ="email" value=email placeholder="Email"}}
+            {{input type ="password" value=password placeholder="Password"}}
+            <button {{action "login"}}>Login</button>
+          </form>
+        </section>
+        <p>&copy; 2014. All Rights Reserved.</p>
+      </div>
+    </script>
+
+    <script type="text/x-handlebars" data-template-name="login/freelancer">
+      <div class="s-and-l-wrapper">
+        <section class="body">
+          <img src="images/Market_Place_wh_horz.png" class="logo">
+          <form>
+            {{input type="email" value=email placeholder="Email"}}
+            {{input type="password" value=password placeholder="Password"}}
+            <button {{action "login"}}>Login</button>
+          </form>
+        </section>
+        <p>&copy; 2014. All Rights Reserved.</p>
+      </div>
+    </script>
+
+
+    <!--//////////////// Client ///////////////////-->
+
+    <script type="text/x-handlebars" data-template-name="client">
+      <div class="container">
+        <section class="header">
+          <div class="logo">{{#link-to 'client-profile.my' user.id}}<img src="images/Market_Place_wh_horz.png">{{/link-to}}</div>
+          <ul class="navigation">
+            <li {{action "logOut"}}>Logout</li>
+            <li>{{#link-to 'client.my-jobs'}}All My Jobs{{/link-to}}</li>
+            <li>{{#link-to 'client.post-job'}}Post A Job{{/link-to}}</li>
+            <li>{{#link-to 'client-profile.my' user.id}}Profile{{/link-to}}</li>
+          </ul>
+        </section>
+
+        {{outlet}}
+      </div>
+    </script>
+
+    <!-- Create Profile -->
+    <script type="text/x-handlebars" data-template-name="client-profile/create">
+      <div class="cover-photo-container">
+        <div class="add-cover-photo">
+          <div class="add-cover-action" {{action 'addCover'}}>
+            <span class="flaticon-plus32"></span>
+            <p>Add Cover Photo</p>
+          </div>
+        </div>
+        <img id="cover-photo" {{bind-attr src=addCover}}>
+      </div>
+      <div class="avatar">
+        <div class="add-avatar" {{action 'addAvatar'}}>
+          <div>
+            <span class="flaticon-plus32"></span>
+            <p>Add Profile Photo</p>
+          </div>
+        </div>
+        <img id="avatar" {{bind-attr src=addAvatar}}>
+      </div>
+      <div class="profile-container">
+        <form>
+          {{input class="name" type="text" placeholder="Name" value=name}}
+          {{textarea type="text" placeholder="Information about you or your business" value=bio}}
+          <div class="contact-info">
+            <h1>Contact Info</h1>
+            {{input type="email" placeholder="Email" value=email}}
+            {{input type="tel" placeholder="Phone Number" value=number}}
+          </div>
+          <div class="save">
+            <button {{action 'createProfile'}}>Create</button>
+          </div>
+        </form>
+      </div>
+      <section class="footer">
+        <div class="logo">{{#link-to 'index'}}<img src="images/Market_Place_wh_horz.png">{{/link-to}}</div>
+        <p>&copy; 2014. All Rights Reserved.</p>
+      </section>
+    </script>
+
+    <!-- Profile -->
+    <script type="text/x-handlebars" data-template-name="client-profile/my">
+      <div class="cover-photo-container"><img id="cover-photo" {{bind-attr src=profile.coverPhoto}}></div>
+      <div class="avatar">
+        <img {{bind-attr src=profile.avatar}}>
+      </div>
+      <div class="profile-container">
+        <h1>{{profile.name}}</h1>
+        <p>{{profile.bio}}</p>
+        <div class="contact-info">
+          <h1>Contact Info</h1>
+          <h4>{{profile.email}}</h4>
+          <h4>{{profile.number}}</h4>
+        </div>
+      </div>
+      <section class="footer">
+        <div class="logo">{{#link-to 'index'}}<img src="images/Market_Place_wh_horz.png">{{/link-to}}</div>
+        <p>&copy; 2014. All Rights Reserved.</p>
+      </section>
+    </script>
+
+    <!-- Static Profile -->
+    <script type="text/x-handlebars" data-template-name="profile-client/static">
+      <div class="container">
+        <section class="header">
+          <div class="logo">{{#link-to 'profile.my' id}}<img src="images/Market_Place_wh_horz.png">{{/link-to}}</div>
+          <ul class="navigation">
+            <li {{action "logOut"}}>Logout</li>
+            <li>{{#link-to 'freelancer.my-bids' id}}My Bids{{/link-to}}</li>
+            <li>{{#link-to 'freelancer.jobs'}}Jobs{{/link-to}}</li>
+            <li>{{#link-to 'profile.my'id}}Profile{{/link-to}}</li>
+          </ul>
+        </section>
+        <div class="cover-photo-container"><img id="cover-photo" {{bind-attr src=profile.coverPhoto}}></div>
+        <div class="avatar">
+          <img {{bind-attr src=profile.avatar}}>
+        </div>
+        <div class="profile-container">
+          <h1>{{profile.name}}</h1>
+          <p>{{profile.bio}}</p>
+          <div class="contact-info">
+            <h1>Contact Info</h1>
+            <h4>{{profile.email}}</h4>
+            <h4>{{profile.number}}</h4>
+          </div>
+        </div>
+
+        <section class="footer">
+          <div class="logo">{{#link-to 'index'}}<img src="images/Market_Place_wh_horz.png">{{/link-to}}</div>
+          <p>&copy; 2014. All Rights Reserved.</p>
+        </section>
+      </div>
+
+
+    </script>
+
+    <!-- Post-Job Template -->
+    <script type="text/x-handlebars" data-template-name="client/post-job">
+      <div class="post-container">
+        <h1>Post Job</h1>
+        <div class="project-type">
+          <h3>Type of project</h3>
+          {{input type="text" placeholder="Web Application, Static Website, Landing Page, Branding, Content, etc." value=typeOfProject}}
+        </div>
+        <div class="project-scope">
+          <h3>Project Scope</h3>
+          {{textarea class="scope" placeholder="Specify the project details, what's being provided by you, what's expected, etc." value=projectScope}}
+        </div>
+        <div class="post">
+          <button {{action "createJob"}}>Post Job</button>
+        </div>
+      </div>
+    </script>
+
+    <!-- My-Jobs Template -->
+    <script type="text/x-handlebars" data-template-name="client/my-jobs">
+      <div class="posted-job-container">
+        <h1 class="my-jobs-h1">Jobs</h1>
+        {{#each}}
+        <div class="posted-job-tile">
+          <h2>{{typeOfProject}}</h2>
+          <p>{{projectScope}}</p>
+
+          <ul>
+            {{#each acceptedBids itemController="bidItem"}}
+            <li class="bid-item"}}>
+              <div>
+                <span>Bid by: </span>
+                <span>{{#link-to 'profile-freelancer.static' user.id}}{{user.name}}{{/link-to}}</span>
+                <img src="images/accept.png" {{action "acceptBid"}}>
+              </div>
+              <div class="chat">
+                {{#link-to 'communication.job' job.id}}Iron out the details here{{/link-to}}
+              </div>
+            </li>
+            {{else}}
+            {{#each bids itemController="bidItem"}}
+            <li class="bid-item"}}>
+              <div>
+                <span>Bid by: </span>
+                <span>{{#link-to 'profile-freelancer.static' user.id}}{{user.name}}{{/link-to}}</span>
+                <img src="images/bid.png" {{action "acceptBid"}}>
+              </div>
+            </li>
+            {{/each}}
+            {{/each}}
+          </ul>
+
+        </div>
+        {{/each}}
+      </div>
+    </script>
+
+
+    <!--//////////////// Freelance ///////////////////-->
+
+    <script type="text/x-handlebars" data-template-name="freelancer">
+      <div class="container">
+        <section class="header">
+          <div class="logo">{{#link-to 'profile.my' user.id}}<img src="images/Market_Place_wh_horz.png">{{/link-to}}</div>
+          <ul class="navigation">
+            <li {{action 'logOut'}}>Logout</li>
+            <li>{{#link-to 'freelancer.jobs'}}Jobs{{/link-to}}</li>
+            <li>{{#link-to 'freelancer.my-bids' user.id}}My Bids{{/link-to}}</li>
+            <li>{{#link-to 'profile.my' user.id}}Profile{{/link-to}}</li>
+          </ul>
+        </section>
+      </div>
+
+      {{outlet}}
+    </script>
+
+    <!-- Create-Profile Template -->
+    <script type="text/x-handlebars" data-template-name="profile/create">
+      <div class="cover-photo-container">
+        <div class="add-cover-photo">
+          <div class="add-cover-action" {{action 'addCover'}}>
+            <span class="flaticon-plus32"></span>
+            <p>Add Cover Photo</p>
+          </div>
+        </div>
+        <img id="cover-photo" {{bind-attr src=addCover}}>
+      </div>
+      <div class="avatar">
+        <div class="add-avatar" {{action 'addAvatar'}}>
+          <div>
+            <span class="flaticon-plus32"></span>
+            <p>Add Profile Photo</p>
+          </div>
+        </div>
+        <img id="avatar" {{bind-attr src=addAvatar}}>
+      </div>
+
+      <div class="profile-container">
+        <form>
+          {{input class="name" type="text" placeholder="Name" value=name}}
+          {{input class="rate" name="rate" value=rate placeholder="Hourly Rate"}}
+          {{textarea type="text" placeholder="Information about yourself and some of your qualifications" value=bio}}
+
+          <div class="portfolio">
+
+          </div>
+
+          <div class="contact-info">
+            <h1>Contact Info</h1>
+            {{input type="email" placeholder="Email" value=email}}
+            {{input type="tel" placeholder="Phone Number" value=number}}
+          </div>
+
+          <div class="save">
+            <button {{action 'createProfile'}}>Create</button>
+          </div>
+        </form>
+      </div>
+      <section class="footer">
+        <div class="logo">{{#link-to 'index'}}<img src="images/Market_Place_wh_horz.png">{{/link-to}}</div>
+        <p>&copy; 2014. All Rights Reserved.</p>
+      </section>
+    </script>
+
+    <!-- Profile Template -->
+    <script type="text/x-handlebars" data-template-name="profile/my">
+      <div class="cover-photo-container"><img id="cover-photo" {{bind-attr src=profile.coverPhoto}}></div>
+      <div class="avatar">
+        <img {{bind-attr src=profile.avatar}}>
+      </div>
+      <div class="profile-container">
+        <h1>{{profile.name}}</h1>
+        <p>${{profile.rate}}/Hr</p>
+        <p>{{profile.bio}}</p>
+        <div class="portfolio">
+          <div class="p-item"></div>
+          <div class="p-item2"></div>
+          <div class="p-item3"></div>
+          <div class="p-item4"></div>
+        </div>
+        <div class="contact-info">
+          <h1>Contact Info</h1>
+          <h4>{{profile.email}}</h4>
+          <h4>{{profile.number}}</h4>
+        </div>
+      </div>
+      <section class="footer">
+        <div class="logo">{{#link-to 'index'}}<img src="images/Market_Place_wh_horz.png">{{/link-to}}</div>
+        <p>&copy; 2014. All Rights Reserved.</p>
+      </section>
+    </script>
+
+    <!-- Static Profile -->
+    <script type="text/x-handlebars" data-template-name="profile-freelancer/static">
+      <section class="header">
+        <div class="logo">{{#link-to 'client-profile.my' id}}<img src="images/Market_Place_wh_horz.png">{{/link-to}}</div>
+        <ul class="navigation">
+          <li {{action "logOut"}}>Logout</li>
+          <li>{{#link-to 'client.my-jobs'}}All My Jobs{{/link-to}}</li>
+          <li>{{#link-to 'client.post-job'}}Post A Job{{/link-to}}</li>
+          <li>{{#link-to 'client-profile.my' id}}Profile{{/link-to}}</li>
+        </ul>
+      </section>
+
+      <div class="cover-photo-container"><img id="cover-photo" {{bind-attr src=profile.coverPhoto}}></div>
+      <div class="avatar">
+        <img {{bind-attr src=profile.avatar}}>
+      </div>
+      <div class="profile-container">
+        <h1>{{profile.name}}</h1>
+        <p>${{profile.rate}}/Hr</p>
+        <p>{{profile.bio}}</p>
+        <div class="portfolio">
+          <div class="p-item"><img {{bind-attr src=profile.portfolioImgOne}}/></div>
+          <div class="p-item"><img {{bind-attr src=profile.portfolioImgTwo}}/></div>
+          <div class="p-item"><img {{bind-attr src=profile.portfolioImgThree}}/></div>
+          <div class="p-item"><img {{bind-attr src=profile.portfolioImgFour}}/></div>
+          <div class="p-item"><img {{bind-attr src=profile.portfolioImgFive}}/></div>
+          <div class="p-item"><img {{bind-attr src=profile.portfolioImgSix}}/></div>
+        </div>
+        <div class="contact-info">
+          <h1>Contact Info</h1>
+          <h4>{{profile.email}}</h4>
+          <h4>{{profile.number}}</h4>
+        </div>
+      </div>
+
+      <section class="footer">
+        <div class="logo">{{#link-to 'index'}}<img src="images/Market_Place_wh_horz.png">{{/link-to}}</div>
+        <p>&copy; 2014. All Rights Reserved.</p>
+      </section>
+    </script>
+
+    <!-- Jobs Template -->
+    <script type="text/x-handlebars" data-template-name="freelancer/jobs">
+      <div class="job-container">
+        <h1>Jobs</h1>
+        {{#each}}
+        <div {{bind-attr class="placedBid:hidden:job-tile"}}>
+          <h2>{{typeOfProject}}</h2>
+          <p>{{projectScope}}</p>
+          <p>Posted by: {{#link-to 'profile-client.static' user.id}} {{user.name}}{{/link-to}}</p>
+          <button {{action 'placeBid'}}>Place Bid</button>
+        </div>
+        {{/each}}
+      </div>
+    </script>
+
+    <!-- My-Bids Template -->
+    <script type="text/x-handlebars" data-template-name="freelancer/my-bids">
+      <div class="job-container">
+        <h1>My Bids</h1>
+        {{#each}}
+        <div class="job-tile">
+          <h2>{{job.typeOfProject}}</h2>
+          <p>{{job.projectScope}}</p>
+          <p>Posted by: {{#link-to 'profile-client.static' user.id}} {{job.user.name}}{{/link-to}}</p>
+
+          {{#if accepted}}
+          <div class="accepted">
+            {{#link-to 'communication.job' job.id}}<img src="images/Check.png"><span>Bid has been accepted!</span>{{/link-to}}
+          </div>
+          {{/if}}
+        </div>
+        {{/each}}
+      </div>
+    </script>
+
+    <!-- Chat -->
+    <script type="text/x-handlebars" data-template-name="communication/job">
+      <div class="chat-container">
+        <section class="header">
+          <div class="logo">{{#link-to 'profile.my' user.id}}<img src="images/Market_Place_wh_horz.png">{{/link-to}}</div>
+          <ul class="navigation">
+            <li {{action 'logOut'}}>Logout</li>
+            <li>{{#link-to 'freelancer.jobs'}}Jobs{{/link-to}}</li>
+            <li>{{#link-to 'freelancer.my-bids' user.id}}My Bids{{/link-to}}</li>
+            <li>{{#link-to 'profile.my' user.id}}Profile{{/link-to}}</li>
+          </ul>
+        </section>
+
+        <div class="chat">
+          <div class="chat-box">
+            {{#each messages}}
+            <div class="chat-message">
+              <div class="chat-person">
+                <div class="chat-avatar">
+                  <img {{bind-attr src=user.profile.avatar}}>
+                </div>
+              </div>
+              <div class="message">
+                <p class="user">{{user.name}} <span>{{date-format date}}</span></p>
+                <p>{{message}}</p>
+              </div>
+            </div>
+            {{/each}}
+          </div>
+          <div class="chat-input">
+            {{input value=newMessage placeholder="Talk about the project" action='postMessage'}}
+          </div>
+        </div>
+      </div>
+    </script>
+
+    <!-- build:js scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="../bower_components/jquery/dist/jquery.js"></script>
+    <script src="../bower_components/handlebars/handlebars.js"></script>
+    <script src="../bower_components/ember/ember.js"></script>
+    <script src="../bower_components/firebase/firebase.js"></script>
+    <script src="../bower_components/ember-data/ember-data.js"></script>
+    <script src="../bower_components/emberfire/dist/emberfire.min.js"></script>
+    <script src="../bower_components/moment/moment.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+        <!-- build:js scripts/main.js -->
+        <script src="scripts/application.js"></script>
+        <script src="scripts/router.js"></script>
+        <script src="scripts/workflow.js"></script>
+        <script src="scripts/models/user_model.js"></script>
+        <script src="scripts/models/job.js"></script>
+        <script src="scripts/models/Bids.js"></script>
+        <script src="scripts/models/message_model.js"></script>
+        <script src="scripts/models/profile_model.js"></script>
+        <script src="scripts/controllers/application_controller.js"></script>
+        <script src="scripts/controllers/client/myjobs_controller.js"></script>
+        <script src="scripts/controllers/client/signup_client_controller.js"></script>
+        <script src="scripts/controllers/client/login_client_controller.js"></script>
+        <script src="scripts/controllers/client/postJob_controller.js"></script>
+        <script src="scripts/controllers/client/client_controller.js"></script>
+        <script src="scripts/controllers/client/clientProfile_controller.js"></script>
+        <script src="scripts/controllers/client/client-profile_my.js"></script>
+        <script src="scripts/controllers/client/chat_controller.js"></script>
+        <script src="scripts/controllers/freelance/freelancer_controller.js"></script>
+        <script src="scripts/controllers/freelance/login_freelancer_controller.js"></script>
+        <script src="scripts/controllers/freelance/freelancer_jobs_controller.js"></script>
+        <script src="scripts/controllers/freelance/profile_myprofile_controller.js"></script>
+        <script src="scripts/controllers/freelance/profile_create_controller.js"></script>
+        <script src="scripts/controllers/freelance/signup_freelancer_controller.js"></script>
+        <script src="scripts/controllers/freelance/mybids_controller.js"></script>
+        <script src="scripts/routes/client_route.js"></script>
+        <script src="scripts/routes/freelancer_route.js"></script>
+        <!-- endbuild -->
+</body>
+</html>

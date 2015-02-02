@@ -1,0 +1,847 @@
+// Bourbon, Neat, Refills
+@import '../../bower_components/bourbon/dist/bourbon';
+@import '../../bower_components/neat/app/assets/stylesheets/neat';
+@import '../../bower_components/bitters/app/assets/stylesheets/base';
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
+
+
+// ================= Icons ================= //
+
+@font-face {
+  font-family: "Flaticon";
+  src: url("flaticon.eot");
+  src: url("flaticon.eot#iefix") format("embedded-opentype"),
+  url("flaticon.woff") format("woff"),
+  url("flaticon.ttf") format("truetype"),
+  url("flaticon.svg") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="flaticon-"]:before, [class*=" flaticon-"]:before,
+[class^="flaticon-"]:after, [class*=" flaticon-"]:after {
+  font-family: Flaticon;
+  font-size: 20px;
+  font-style: normal;
+}
+
+.flaticon-male157:before {
+  content: "\e000";
+}
+
+.flaticon-plus32:before {
+  content: "\e001";
+}
+
+.flaticon-settings21:before {
+  content: "\e002";
+}
+
+
+// ================= Variables ================= //
+
+
+$primary-color: #000; // Black
+$secondary-color: #fff; // White
+$transparent-bg: rgba(0, 0, 0, .0);
+$border-bottom: solid 1px #eee;
+$primary-font: "Lato", "Helvetica", "Arial", "sans-serif";
+$primary-font-color: #5a5a5a;
+
+// ================= Generic ================= //
+
+
+body {
+  font-family: $primary-font;
+  font-weight: 400;
+  margin: 0;
+}
+
+h1, h2, h3, h4, button {
+  font-family: $primary-font;
+}
+
+input {
+  font-family: $primary-font;
+  font-weight: 400;
+}
+
+.hidden {
+  display: none;
+}
+
+// ================= Landing Page ================= //
+
+
+.container {
+  @include outer-container;
+  max-width: 100%;
+}
+
+header {
+  @include span-columns(12);
+  background-color: $primary-color;
+  -webkit-box-shadow: rem(0) rem(0) rem(20) rgba(0, 0, 0, .5);
+  position: fixed;
+  z-index: 1000;
+
+  .logo {
+    @include span-columns(4);
+    @include shift(4);
+  }
+
+  img {
+    width: 90%;
+    display: inline-block;
+    float: right;
+    padding: rem(50) 0;
+  }
+
+  .login-buttons {
+    @include span-columns(1);
+    float: right;
+    padding: rem(10) rem(30) rem(10) rem(10);
+  }
+
+  p {
+    @include span-columns(12);
+    font-size: rem(12);
+    text-align: center;
+    text-transform: uppercase;
+    color: $secondary-color;
+  }
+
+  a {
+    padding: 0;
+  }
+
+  button {
+    width: rem(50);
+    font-family: $primary-font;
+    color: $secondary-color;
+    border: solid 1px $secondary-color;
+    background-color: $primary-color;
+    margin-bottom: rem(10);
+    padding: rem(5) 0;
+  }
+
+  button:hover {
+    color: $primary-color;
+    background-color: $secondary-color;
+  }
+}
+
+.signup {
+  @include outer-container;
+  max-width: 100%;
+  text-align: center;
+  @include background-image(linear-gradient(to top, rgba(0, 0, 0, .4) 1%, rgba(1, 1, 1, .4) 102%, #fff), url("/images/photo_2.jpg"));
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.signup-button {
+  @include span-columns(6);
+  @include shift(3);
+  padding: rem(280) 0 rem(220);
+
+  h1 {
+    font-family: $primary-font;
+    font-size: rem(50);
+    color: $secondary-color;
+    margin: rem(5);
+  }
+
+  p {
+    font-size: rem(16);
+    color: $secondary-color;
+    margin: rem(20);
+  }
+
+  .s-buttons {
+    @include span-columns(5);
+    @include shift(3.5);
+    margin-top: rem(10);
+  }
+
+  button {
+    font-family: $primary-font;
+    background-color: rgba(255, 255, 255, 0);
+    border: solid 2px $secondary-color;
+  }
+
+  button:hover {
+    background-color: rgba(0, 0, 0, .5);
+    border: solid 2px rgba(167, 167, 167, .1);
+  }
+
+  .client-signup {
+    float: left;
+    padding: rem(10) rem(30);
+  }
+
+  .freelance-signup {
+    float: right;
+    padding: rem(10) rem(20);
+  }
+}
+
+.info {
+  font-family: $primary-font;
+  text-align: center;
+  padding: rem(150) rem(100);
+}
+
+.steps {
+  @include outer-container;
+  max-width: 100%;
+  font-family: $primary-font;
+  text-align: center;
+  color: $secondary-color;
+  @include background-image(linear-gradient(to top, rgba(0, 0, 0, .4) 1%, rgba(1, 1, 1, .4) 102%, #fff), url("/images/photo_3.jpg"));
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: top;
+  background-repeat: no-repeat;
+  padding: rem(150) rem(30) rem(125);
+
+  .step {
+    @include span-columns(4);
+  }
+}
+
+footer {
+  @include outer-container;
+  max-width: 100%;
+  background-color: $primary-color;
+  padding: rem(30) 0 rem(25);
+
+  .logo {
+    @include span-columns(2);
+    @include shift(5);
+  }
+
+  p {
+    @include span-columns(2);
+    @include shift(5);
+    clear: both;
+    font-size: rem(12);
+    color: #fff;
+    text-align: center;
+  }
+}
+
+
+// ================= Signup & login Pages ================= //
+
+
+.s-and-l-wrapper {
+  @include outer-container;
+  max-width: 100%;
+  height: 100vh;
+  @include background-image(linear-gradient(to top, rgba(0, 0, 0, .2) 1%, rgba(1, 1, 1, .2) 102%, #fff), url("/images/photo_4.jpg"));
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  .body {
+    @include span-columns(6);
+    @include shift(3);
+    margin-top: 8%;
+    padding: rem(100);
+    background-color: rgba(0, 0, 0, .5);
+    border-radius: rem(10);
+  }
+
+  .logo {
+    @include span-columns(8);
+    @include shift(2);
+    margin-bottom: rem(30);
+    margin-right: 0;
+  }
+
+  input {
+    color: $secondary-color;
+    border: 0;
+    border-radius: 0;
+    border-bottom: solid 1px $secondary-color;
+    background-color: rgba(0, 0, 0, 0);
+    margin-bottom: rem(30);
+  }
+
+  input:focus {
+    background-color: rgba(0, 0, 0, .3);
+  }
+
+  button {
+    @include span-columns(4);
+    @include shift(4);
+    border: solid 1px $secondary-color;
+    background-color: $transparent-bg;
+    margin-top: rem(10);
+    margin-bottom: rem(10);
+  }
+
+  button:hover {
+    background-color: rgba(255, 255, 255, .3);
+  }
+
+  p {
+    @include span-columns(6);
+    @include shift(3);
+    text-align: center;
+    font-size: rem(12);
+    color: $secondary-color;
+    margin-top: 5%;
+  }
+}
+
+
+// ================= Profiles ================= //
+
+
+.header {
+  @include span-columns(12);
+  background-color: $primary-color;
+
+  .logo {
+    @include span-columns(3);
+  }
+
+  img {
+    display: inline-block;
+    float: right;
+    padding: rem(20) rem(40);
+  }
+
+  ul {
+    @include span-columns(9);
+    float: right;
+    font-size: rem(14);
+    color: $secondary-color;
+    padding: rem(18) 0;
+  }
+
+  li {
+    float: right;
+    margin-right: rem(10);
+
+    &:first-child {
+      margin-right: rem(40);
+      cursor: pointer;
+
+      &:hover {
+        color: #c5c5c5;
+      }
+    }
+  }
+
+  a {
+    color: $secondary-color;
+  }
+
+  a:hover {
+    color: #c5c5c5;
+  }
+
+  .active {
+    color: #c5c5c5;
+  }
+}
+
+.footer {
+  @include outer-container;
+  max-width: 100%;
+  background-color: $primary-color;
+  padding: rem(12) 0 rem(5);
+
+  .logo {
+    @include span-columns(2);
+    @include shift(5);
+  }
+
+  p {
+    @include span-columns(2);
+    @include shift(5);
+    clear: both;
+    font-size: rem(12);
+    color: #fff;
+    text-align: center;
+  }
+}
+
+
+// ---- Profile ---- //
+
+
+.cover-photo-container {
+  @include span-columns(12);
+  height: rem(300);
+  margin-bottom: rem(40);
+  overflow: hidden;
+  background-color: #eee;
+
+  .add-cover-photo {
+    @include span-columns(1.5);
+    @include shift(5.5);
+    background-color: rgba(255, 255, 255, .5);
+    cursor: pointer;
+    text-align: center;
+    margin-top: 5%;
+    position: absolute;
+    z-index: 1000;
+
+    .add-cover-action {
+      margin-top: 6%;
+      background-color: rgba(255, 255, 255, .3);
+      border-radius: rem(5);
+      padding: rem(30) rem(10);
+    }
+
+    .add-cover-action:hover {
+      background-color: rgba(255, 255, 255, .8);
+    }
+  }
+}
+
+.avatar {
+  width: rem(200);
+  height: rem(200);
+  border-radius: rem(5);
+  background-color: #fff;
+  -webkit-box-shadow: rem(.5) rem(.5) rem(2) rgba(0, 0, 0, .3);
+  position: absolute;
+  top: rem(300);
+  left: rem(200);
+  overflow: hidden;
+
+  img {
+    width: 100%;
+  }
+
+  .add-avatar {
+    width: rem(199.9);
+    height: rem(199.9);
+    text-align: center;
+    border-radius: rem(5);
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, .1);
+    position: inherit;
+    background-size: cover;
+
+    div {
+      padding-top: rem(70);
+    }
+  }
+
+  .add-avatar:hover {
+    background-color: rgba(0, 0, 0, .3);
+  }
+}
+
+.profile-container {
+  @include outer-container;
+  margin-left: 35%;
+
+  h1 {
+    @include span-columns(8);
+    font-family: $primary-font;
+    padding-bottom: rem(40);
+    border-bottom: $border-bottom;
+  }
+
+  p {
+    @include span-columns(8);
+    font-family: $primary-font;
+    font-weight: 400;
+    color: $primary-font-color;
+    padding: rem(40) 0;
+    border-bottom: $border-bottom;
+    line-height: 175%;
+    margin-bottom: 0;
+  }
+
+  .contact-info {
+    @include span-columns(8);
+    padding: rem(40) 0 rem(80);
+
+    h1 {
+      @include span-columns(12);
+      font-family: $primary-font;
+      font-size: rem(24);
+      margin-bottom: rem(10);
+      padding: 0;
+      border: 0;
+    }
+  }
+
+  h4 {
+    font-family: $primary-font;
+    font-weight: 300;
+    font-size: rem(18);
+    display: inline-block;
+    margin-right: rem(40);
+  }
+
+  .name,
+  .rate {
+    @include span-columns(8);
+    font-family: $primary-font;
+    margin-bottom: rem(40);
+  }
+
+  textarea {
+    @include span-columns(8);
+    height: rem(200);
+    font-family: $primary-font;
+    margin-bottom: rem(40);
+    resize: none;
+  }
+
+  .save {
+    @include span-columns(8);
+    margin-bottom: rem(80);
+
+    button {
+      @include span-columns(4);
+      @include shift(4);
+    }
+  }
+
+  button {
+    font-family: $primary-font;
+    font-size: rem(14);
+    color: #fff;
+    background-color: #1fa92f;
+  }
+
+  button:hover {
+    color: #fff;
+    background-color: #17931f;
+  }
+}
+
+.portfolio {
+  @include span-columns(8);
+  padding: rem(40) 0;
+  border-bottom: $border-bottom;
+
+  .p-item {
+    @include span-columns(3);
+    height: rem(100);
+    border: solid 1px #eee;
+    background-image: url('/images/port_1.png');
+    background-size: cover;
+    background-position: center;
+  }
+
+  .p-item2 {
+    @include span-columns(3);
+    height: rem(100);
+    border: solid 1px #eee;
+    background-image: url('/images/port_2.png');
+    background-size: cover;
+    background-position: center;
+  }
+
+  .p-item3 {
+    @include span-columns(3);
+    height: rem(100);
+    border: solid 1px #eee;
+    background-image: url('/images/port_3.png');
+    background-size: cover;
+    background-position: center;
+  }
+
+  .p-item4 {
+    @include span-columns(3);
+    height: rem(100);
+    border: solid 1px #eee;
+    background-image: url('/images/port_4.png');
+    background-size: cover;
+    background-position: center;
+  }
+}
+
+// ================= View Bids and Jobs ================= //
+
+
+.job-container {
+  @include outer-container;
+  margin-bottom: rem(100);
+
+  h1 {
+    font-size: rem(24);
+    font-weight: 400;
+    padding: rem(30) 0;
+    border-bottom: $border-bottom;
+  }
+
+  .job-tile {
+    @include span-columns(3);
+    height: rem(300);
+    margin-right: rem(15);
+    margin-top: rem(30);
+    padding: rem(30) 0 rem(30) rem(15);
+    border-radius: rem(5);
+    -webkit-box-shadow: 0 0 rem(3) #e4e4e4;
+    overflow: scroll;
+  }
+
+  h2 {
+    font-size: rem(20);
+  }
+
+  p {
+    font-size: rem(16);
+    color: $primary-font-color;
+    margin: rem(10) 0 0;
+
+    a {
+      color: $primary-color;
+    }
+
+    a:hover {
+      color: $primary-font-color;
+    }
+  }
+
+  .accepted {
+    margin-top: rem(20);
+    padding-left: rem(35);
+
+    img {
+      width: 10%;
+      margin-right: rem(5);
+    }
+
+    span {
+      font-size: rem(12);
+      font-weight: 400;
+      color: #359116;
+      display: inline-block;
+      padding: rem(4) 0;
+      vertical-align: top;
+    }
+  }
+
+  button {
+    @include span-columns(6);
+    @include shift(2.5);
+    font-size: rem(14);
+    font-family: $primary-font;
+    background-color: #1fa92f;
+    margin-top: rem(50);
+  }
+
+  button:hover {
+    background-color: #17931f;
+  }
+
+  button:focus {
+    outline: 0;
+  }
+}
+
+
+// ================= Post Job ================= //
+
+
+.post-container {
+  @include outer-container;
+
+  h1 {
+    font-size: rem(24);
+    font-weight: 400;
+    padding: rem(80) 0 rem(30);
+    border-bottom: $border-bottom;
+  }
+
+  .project-type,
+  .project-scope {
+    padding: rem(30) 0 0;
+  }
+
+  h3 {
+    font-size: rem(18);
+    font-weight: 400;
+    margin-bottom: rem(10);
+  }
+
+  textarea {
+    height: rem(280);
+    resize: none;
+  }
+
+  .post {
+    @include span-columns(12);
+    margin: rem(20) 0 rem(40);
+
+    button {
+      @include span-columns(2);
+      @include shift(5);
+      background-color: #1fa92f;
+    }
+
+    button:hover {
+      background-color: #17931f;
+    }
+  }
+}
+
+
+// ================= Posted Jobs ================= //
+
+
+.posted-job-container {
+  @include outer-container;
+  margin-bottom: rem(100);
+
+  h1 {
+    font-size: rem(24);
+    font-weight: 400;
+    padding: rem(80) 0 rem(30);
+    border-bottom: $border-bottom;
+  }
+
+  .posted-job-tile {
+    @include span-columns(3);
+    height: rem(300);
+    margin-right: rem(15);
+    margin-top: rem(30);
+    padding: rem(30) 0 rem(30) rem(15);
+    border-radius: rem(5);
+    -webkit-box-shadow: 0 0 rem(3) #e4e4e4;
+    overflow: scroll;
+  }
+
+  h2 {
+    font-size: rem(20);
+  }
+
+  p {
+    font-size: rem(16);
+    color: $primary-font-color;
+    margin: rem(10) 0 0;
+  }
+
+  ul {
+    margin-top: rem(10);
+  }
+
+  li {
+    clear: both;
+    padding: rem(7);
+  }
+
+  span {
+    vertical-align: top;
+    margin-right: rem(10);
+  }
+
+  img {
+    float: right;
+    margin-right: rem(20);
+    cursor: pointer;
+  }
+
+  a {
+    color: $primary-color;
+  }
+
+  a:hover {
+    color: $primary-font-color;
+  }
+
+  .chat {
+    margin-top: rem(20);
+  }
+}
+
+
+// ================= Chat ================= //
+
+
+.chat-container {
+  height: 100vh;
+
+  .chat {
+    @include outer-container;
+    height: 80%;
+  }
+
+  .chat-box {
+    height: 85%;
+    padding: rem(80) rem(50) rem(20);
+    overflow: scroll;
+  }
+
+  .chat-input {
+    height: 10%;
+  }
+
+  .chat-message {
+    overflow: scroll;
+    padding: rem(20) 0;
+    border-bottom: $border-bottom;
+
+    &:last-child {
+      border: 0;
+    }
+  }
+
+  .chat-person {
+    @include span-columns(2);
+
+    .chat-avatar {
+      height: rem(100);
+      width: rem(100);
+      display: inline-block;
+      overflow: hidden;
+    }
+  }
+
+  .message {
+    @include span-columns(10);
+
+    .user {
+      font-size: rem(14);
+      font-weight: 700;
+      color: $primary-color;
+    }
+
+    span {
+      color: #9e9e9e;
+      font-weight: 400;
+      margin-left: rem(10);
+    }
+
+    p {
+      font-size: rem(18);
+    }
+  }
+
+  .chat-footer {
+    @include outer-container;
+    max-width: 100%;
+    background-color: $primary-color;
+    padding: rem(12) 0 rem(5);
+    margin-top: 70px;
+
+    .logo {
+      @include span-columns(2);
+      @include shift(5);
+    }
+
+    p {
+      @include span-columns(2);
+      @include shift(5);
+      clear: both;
+      font-size: rem(12);
+      color: #fff;
+      text-align: center;
+    }
+  }
+}
